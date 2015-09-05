@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditResCuentasOrdenesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditResCuentasOrdenesLabel_ordId}" for="ordId" />
+                    <h:inputText id="ordId" value="#{resCuentasOrdenesController.selected.ordId}" title="#{bundle.EditResCuentasOrdenesTitle_ordId}" required="true" requiredMessage="#{bundle.EditResCuentasOrdenesRequiredMessage_ordId}"/>
+                    <h:outputLabel value="#{bundle.EditResCuentasOrdenesLabel_ordEstadoOrden}" for="ordEstadoOrden" />
+                    <h:inputText id="ordEstadoOrden" value="#{resCuentasOrdenesController.selected.ordEstadoOrden}" title="#{bundle.EditResCuentasOrdenesTitle_ordEstadoOrden}" />
+                    <h:outputLabel value="#{bundle.EditResCuentasOrdenesLabel_ordFechatiempoIngreso}" for="ordFechatiempoIngreso" />
+                    <h:inputText id="ordFechatiempoIngreso" value="#{resCuentasOrdenesController.selected.ordFechatiempoIngreso}" title="#{bundle.EditResCuentasOrdenesTitle_ordFechatiempoIngreso}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditResCuentasOrdenesLabel_ordEmpleadoId}" for="ordEmpleadoId" />
+                    <h:selectOneMenu id="ordEmpleadoId" value="#{resCuentasOrdenesController.selected.ordEmpleadoId}" title="#{bundle.EditResCuentasOrdenesTitle_ordEmpleadoId}" >
+                        <f:selectItems value="#{resEmpleadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditResCuentasOrdenesLabel_ordCuentaId}" for="ordCuentaId" />
+                    <h:selectOneMenu id="ordCuentaId" value="#{resCuentasOrdenesController.selected.ordCuentaId}" title="#{bundle.EditResCuentasOrdenesTitle_ordCuentaId}" >
+                        <f:selectItems value="#{resCuentasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{resCuentasOrdenesController.update}" value="#{bundle.EditResCuentasOrdenesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditResCuentasOrdenesViewLink}"/>
+                <br />
+                <h:commandLink action="#{resCuentasOrdenesController.prepareList}" value="#{bundle.EditResCuentasOrdenesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditResCuentasOrdenesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

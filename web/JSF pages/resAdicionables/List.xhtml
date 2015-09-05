@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResAdicionablesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResAdicionablesEmpty}" rendered="#{resAdicionablesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resAdicionablesController.items.rowCount > 0}">
+                    <h:outputText value="#{resAdicionablesController.pagination.pageFirstItem + 1}..#{resAdicionablesController.pagination.pageLastItem + 1}/#{resAdicionablesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resAdicionablesController.previous}" value="#{bundle.Previous} #{resAdicionablesController.pagination.pageSize}" rendered="#{resAdicionablesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resAdicionablesController.next}" value="#{bundle.Next} #{resAdicionablesController.pagination.pageSize}" rendered="#{resAdicionablesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resAdicionablesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiAdicionable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiAdicionable}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiBanderaImportante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiBanderaImportante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiBanderaAgregable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiBanderaAgregable}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiBanderaQuitable}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiBanderaQuitable}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiBanderaEstadistico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiBanderaEstadistico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiPrecio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiPrecio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResAdicionablesTitle_adiActivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adiActivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resAdicionablesController.prepareView}" value="#{bundle.ListResAdicionablesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resAdicionablesController.prepareEdit}" value="#{bundle.ListResAdicionablesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resAdicionablesController.destroy}" value="#{bundle.ListResAdicionablesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resAdicionablesController.prepareCreate}" value="#{bundle.ListResAdicionablesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResAdicionablesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

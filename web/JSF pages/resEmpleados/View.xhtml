@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewResEmpleadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewResEmpleadosLabel_empId}"/>
+                    <h:outputText value="#{resEmpleadosController.selected.empId}" title="#{bundle.ViewResEmpleadosTitle_empId}"/>
+                    <h:outputText value="#{bundle.ViewResEmpleadosLabel_empUsario}"/>
+                    <h:outputText value="#{resEmpleadosController.selected.empUsario}" title="#{bundle.ViewResEmpleadosTitle_empUsario}"/>
+                    <h:outputText value="#{bundle.ViewResEmpleadosLabel_empClave}"/>
+                    <h:outputText value="#{resEmpleadosController.selected.empClave}" title="#{bundle.ViewResEmpleadosTitle_empClave}"/>
+                    <h:outputText value="#{bundle.ViewResEmpleadosLabel_empNombre}"/>
+                    <h:outputText value="#{resEmpleadosController.selected.empNombre}" title="#{bundle.ViewResEmpleadosTitle_empNombre}"/>
+                    <h:outputText value="#{bundle.ViewResEmpleadosLabel_empActivo}"/>
+                    <h:outputText value="#{resEmpleadosController.selected.empActivo}" title="#{bundle.ViewResEmpleadosTitle_empActivo}"/>
+                    <h:outputText value="#{bundle.ViewResEmpleadosLabel_empRolId}"/>
+                    <h:outputText value="#{resEmpleadosController.selected.empRolId}" title="#{bundle.ViewResEmpleadosTitle_empRolId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resEmpleadosController.destroyAndView}" value="#{bundle.ViewResEmpleadosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewResEmpleadosEditLink}"/>
+                <br />
+                <h:commandLink action="#{resEmpleadosController.prepareCreate}" value="#{bundle.ViewResEmpleadosCreateLink}" />
+                <br />
+                <h:commandLink action="#{resEmpleadosController.prepareList}" value="#{bundle.ViewResEmpleadosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewResEmpleadosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResCuentasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResCuentasEmpty}" rendered="#{resCuentasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resCuentasController.items.rowCount > 0}">
+                    <h:outputText value="#{resCuentasController.pagination.pageFirstItem + 1}..#{resCuentasController.pagination.pageLastItem + 1}/#{resCuentasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resCuentasController.previous}" value="#{bundle.Previous} #{resCuentasController.pagination.pageSize}" rendered="#{resCuentasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resCuentasController.next}" value="#{bundle.Next} #{resCuentasController.pagination.pageSize}" rendered="#{resCuentasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resCuentasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCuentasTitle_cueId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cueId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCuentasTitle_cueEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cueEstado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCuentasTitle_cueFechaCreacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cueFechaCreacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCuentasTitle_cueFechaCierre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cueFechaCierre}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCuentasTitle_cueBanderaExentoIva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cueBanderaExentoIva}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCuentasTitle_cueBanderaExentoPropina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cueBanderaExentoPropina}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resCuentasController.prepareView}" value="#{bundle.ListResCuentasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resCuentasController.prepareEdit}" value="#{bundle.ListResCuentasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resCuentasController.destroy}" value="#{bundle.ListResCuentasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resCuentasController.prepareCreate}" value="#{bundle.ListResCuentasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResCuentasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

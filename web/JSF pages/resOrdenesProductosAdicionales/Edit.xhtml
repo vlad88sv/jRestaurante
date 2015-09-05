@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditResOrdenesProductosAdicionalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosAdicionalesLabel_opaId}" for="opaId" />
+                    <h:inputText id="opaId" value="#{resOrdenesProductosAdicionalesController.selected.opaId}" title="#{bundle.EditResOrdenesProductosAdicionalesTitle_opaId}" required="true" requiredMessage="#{bundle.EditResOrdenesProductosAdicionalesRequiredMessage_opaId}"/>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosAdicionalesLabel_opaOperacion}" for="opaOperacion" />
+                    <h:inputText id="opaOperacion" value="#{resOrdenesProductosAdicionalesController.selected.opaOperacion}" title="#{bundle.EditResOrdenesProductosAdicionalesTitle_opaOperacion}" required="true" requiredMessage="#{bundle.EditResOrdenesProductosAdicionalesRequiredMessage_opaOperacion}"/>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosAdicionalesLabel_opaActivo}" for="opaActivo" />
+                    <h:inputText id="opaActivo" value="#{resOrdenesProductosAdicionalesController.selected.opaActivo}" title="#{bundle.EditResOrdenesProductosAdicionalesTitle_opaActivo}" required="true" requiredMessage="#{bundle.EditResOrdenesProductosAdicionalesRequiredMessage_opaActivo}"/>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosAdicionalesLabel_resOrdenesProductosAdicionalesOpaId}" for="resOrdenesProductosAdicionalesOpaId" />
+                    <h:inputText id="resOrdenesProductosAdicionalesOpaId" value="#{resOrdenesProductosAdicionalesController.selected.resOrdenesProductosAdicionalesOpaId}" title="#{bundle.EditResOrdenesProductosAdicionalesTitle_resOrdenesProductosAdicionalesOpaId}" required="true" requiredMessage="#{bundle.EditResOrdenesProductosAdicionalesRequiredMessage_resOrdenesProductosAdicionalesOpaId}"/>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosAdicionalesLabel_opaOrdenesProductoId}" for="opaOrdenesProductoId" />
+                    <h:selectOneMenu id="opaOrdenesProductoId" value="#{resOrdenesProductosAdicionalesController.selected.opaOrdenesProductoId}" title="#{bundle.EditResOrdenesProductosAdicionalesTitle_opaOrdenesProductoId}" >
+                        <f:selectItems value="#{resOrdenesProductosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosAdicionalesLabel_opaAdicionalId}" for="opaAdicionalId" />
+                    <h:selectOneMenu id="opaAdicionalId" value="#{resOrdenesProductosAdicionalesController.selected.opaAdicionalId}" title="#{bundle.EditResOrdenesProductosAdicionalesTitle_opaAdicionalId}" >
+                        <f:selectItems value="#{resAdicionablesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{resOrdenesProductosAdicionalesController.update}" value="#{bundle.EditResOrdenesProductosAdicionalesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditResOrdenesProductosAdicionalesViewLink}"/>
+                <br />
+                <h:commandLink action="#{resOrdenesProductosAdicionalesController.prepareList}" value="#{bundle.EditResOrdenesProductosAdicionalesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditResOrdenesProductosAdicionalesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

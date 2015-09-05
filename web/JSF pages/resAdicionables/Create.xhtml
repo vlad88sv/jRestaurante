@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateResAdicionablesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiId}" for="adiId" />
+                    <h:inputText id="adiId" value="#{resAdicionablesController.selected.adiId}" title="#{bundle.CreateResAdicionablesTitle_adiId}" required="true" requiredMessage="#{bundle.CreateResAdicionablesRequiredMessage_adiId}"/>
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiAdicionable}" for="adiAdicionable" />
+                    <h:inputText id="adiAdicionable" value="#{resAdicionablesController.selected.adiAdicionable}" title="#{bundle.CreateResAdicionablesTitle_adiAdicionable}" />
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiBanderaImportante}" for="adiBanderaImportante" />
+                    <h:inputText id="adiBanderaImportante" value="#{resAdicionablesController.selected.adiBanderaImportante}" title="#{bundle.CreateResAdicionablesTitle_adiBanderaImportante}" />
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiBanderaAgregable}" for="adiBanderaAgregable" />
+                    <h:inputText id="adiBanderaAgregable" value="#{resAdicionablesController.selected.adiBanderaAgregable}" title="#{bundle.CreateResAdicionablesTitle_adiBanderaAgregable}" />
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiBanderaQuitable}" for="adiBanderaQuitable" />
+                    <h:inputText id="adiBanderaQuitable" value="#{resAdicionablesController.selected.adiBanderaQuitable}" title="#{bundle.CreateResAdicionablesTitle_adiBanderaQuitable}" />
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiBanderaEstadistico}" for="adiBanderaEstadistico" />
+                    <h:inputText id="adiBanderaEstadistico" value="#{resAdicionablesController.selected.adiBanderaEstadistico}" title="#{bundle.CreateResAdicionablesTitle_adiBanderaEstadistico}" />
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiPrecio}" for="adiPrecio" />
+                    <h:inputText id="adiPrecio" value="#{resAdicionablesController.selected.adiPrecio}" title="#{bundle.CreateResAdicionablesTitle_adiPrecio}" />
+                    <h:outputLabel value="#{bundle.CreateResAdicionablesLabel_adiActivo}" for="adiActivo" />
+                    <h:inputText id="adiActivo" value="#{resAdicionablesController.selected.adiActivo}" title="#{bundle.CreateResAdicionablesTitle_adiActivo}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resAdicionablesController.create}" value="#{bundle.CreateResAdicionablesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{resAdicionablesController.prepareList}" value="#{bundle.CreateResAdicionablesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateResAdicionablesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

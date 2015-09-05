@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditResOrdenesProductosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosLabel_orpId}" for="orpId" />
+                    <h:inputText id="orpId" value="#{resOrdenesProductosController.selected.orpId}" title="#{bundle.EditResOrdenesProductosTitle_orpId}" required="true" requiredMessage="#{bundle.EditResOrdenesProductosRequiredMessage_orpId}"/>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosLabel_orpActivo}" for="orpActivo" />
+                    <h:inputText id="orpActivo" value="#{resOrdenesProductosController.selected.orpActivo}" title="#{bundle.EditResOrdenesProductosTitle_orpActivo}" />
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosLabel_orpCuentaOrdenesId}" for="orpCuentaOrdenesId" />
+                    <h:selectOneMenu id="orpCuentaOrdenesId" value="#{resOrdenesProductosController.selected.orpCuentaOrdenesId}" title="#{bundle.EditResOrdenesProductosTitle_orpCuentaOrdenesId}" >
+                        <f:selectItems value="#{resCuentasOrdenesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditResOrdenesProductosLabel_orpProductoId}" for="orpProductoId" />
+                    <h:selectOneMenu id="orpProductoId" value="#{resOrdenesProductosController.selected.orpProductoId}" title="#{bundle.EditResOrdenesProductosTitle_orpProductoId}" >
+                        <f:selectItems value="#{resProductosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{resOrdenesProductosController.update}" value="#{bundle.EditResOrdenesProductosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditResOrdenesProductosViewLink}"/>
+                <br />
+                <h:commandLink action="#{resOrdenesProductosController.prepareList}" value="#{bundle.EditResOrdenesProductosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditResOrdenesProductosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateResEmpleadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateResEmpleadosLabel_empId}" for="empId" />
+                    <h:inputText id="empId" value="#{resEmpleadosController.selected.empId}" title="#{bundle.CreateResEmpleadosTitle_empId}" required="true" requiredMessage="#{bundle.CreateResEmpleadosRequiredMessage_empId}"/>
+                    <h:outputLabel value="#{bundle.CreateResEmpleadosLabel_empUsario}" for="empUsario" />
+                    <h:inputText id="empUsario" value="#{resEmpleadosController.selected.empUsario}" title="#{bundle.CreateResEmpleadosTitle_empUsario}" required="true" requiredMessage="#{bundle.CreateResEmpleadosRequiredMessage_empUsario}"/>
+                    <h:outputLabel value="#{bundle.CreateResEmpleadosLabel_empClave}" for="empClave" />
+                    <h:inputText id="empClave" value="#{resEmpleadosController.selected.empClave}" title="#{bundle.CreateResEmpleadosTitle_empClave}" required="true" requiredMessage="#{bundle.CreateResEmpleadosRequiredMessage_empClave}"/>
+                    <h:outputLabel value="#{bundle.CreateResEmpleadosLabel_empNombre}" for="empNombre" />
+                    <h:inputText id="empNombre" value="#{resEmpleadosController.selected.empNombre}" title="#{bundle.CreateResEmpleadosTitle_empNombre}" required="true" requiredMessage="#{bundle.CreateResEmpleadosRequiredMessage_empNombre}"/>
+                    <h:outputLabel value="#{bundle.CreateResEmpleadosLabel_empActivo}" for="empActivo" />
+                    <h:inputText id="empActivo" value="#{resEmpleadosController.selected.empActivo}" title="#{bundle.CreateResEmpleadosTitle_empActivo}" required="true" requiredMessage="#{bundle.CreateResEmpleadosRequiredMessage_empActivo}"/>
+                    <h:outputLabel value="#{bundle.CreateResEmpleadosLabel_empRolId}" for="empRolId" />
+                    <h:selectOneMenu id="empRolId" value="#{resEmpleadosController.selected.empRolId}" title="#{bundle.CreateResEmpleadosTitle_empRolId}" >
+                        <f:selectItems value="#{resRolesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resEmpleadosController.create}" value="#{bundle.CreateResEmpleadosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{resEmpleadosController.prepareList}" value="#{bundle.CreateResEmpleadosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateResEmpleadosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewResMenuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewResMenuLabel_menId}"/>
+                    <h:outputText value="#{resMenuController.selected.menId}" title="#{bundle.ViewResMenuTitle_menId}"/>
+                    <h:outputText value="#{bundle.ViewResMenuLabel_menMenu}"/>
+                    <h:outputText value="#{resMenuController.selected.menMenu}" title="#{bundle.ViewResMenuTitle_menMenu}"/>
+                    <h:outputText value="#{bundle.ViewResMenuLabel_menActivo}"/>
+                    <h:outputText value="#{resMenuController.selected.menActivo}" title="#{bundle.ViewResMenuTitle_menActivo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resMenuController.destroyAndView}" value="#{bundle.ViewResMenuDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewResMenuEditLink}"/>
+                <br />
+                <h:commandLink action="#{resMenuController.prepareCreate}" value="#{bundle.ViewResMenuCreateLink}" />
+                <br />
+                <h:commandLink action="#{resMenuController.prepareList}" value="#{bundle.ViewResMenuShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewResMenuIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

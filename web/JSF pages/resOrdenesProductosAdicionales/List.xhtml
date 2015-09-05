@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResOrdenesProductosAdicionalesEmpty}" rendered="#{resOrdenesProductosAdicionalesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resOrdenesProductosAdicionalesController.items.rowCount > 0}">
+                    <h:outputText value="#{resOrdenesProductosAdicionalesController.pagination.pageFirstItem + 1}..#{resOrdenesProductosAdicionalesController.pagination.pageLastItem + 1}/#{resOrdenesProductosAdicionalesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resOrdenesProductosAdicionalesController.previous}" value="#{bundle.Previous} #{resOrdenesProductosAdicionalesController.pagination.pageSize}" rendered="#{resOrdenesProductosAdicionalesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resOrdenesProductosAdicionalesController.next}" value="#{bundle.Next} #{resOrdenesProductosAdicionalesController.pagination.pageSize}" rendered="#{resOrdenesProductosAdicionalesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resOrdenesProductosAdicionalesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle_opaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opaId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle_opaOperacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opaOperacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle_opaActivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opaActivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle_resOrdenesProductosAdicionalesOpaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resOrdenesProductosAdicionalesOpaId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle_opaOrdenesProductoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opaOrdenesProductoId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResOrdenesProductosAdicionalesTitle_opaAdicionalId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opaAdicionalId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resOrdenesProductosAdicionalesController.prepareView}" value="#{bundle.ListResOrdenesProductosAdicionalesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resOrdenesProductosAdicionalesController.prepareEdit}" value="#{bundle.ListResOrdenesProductosAdicionalesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resOrdenesProductosAdicionalesController.destroy}" value="#{bundle.ListResOrdenesProductosAdicionalesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resOrdenesProductosAdicionalesController.prepareCreate}" value="#{bundle.ListResOrdenesProductosAdicionalesCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResOrdenesProductosAdicionalesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

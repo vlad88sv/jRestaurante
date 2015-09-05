@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewResCuentasOrdenesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewResCuentasOrdenesLabel_ordId}"/>
+                    <h:outputText value="#{resCuentasOrdenesController.selected.ordId}" title="#{bundle.ViewResCuentasOrdenesTitle_ordId}"/>
+                    <h:outputText value="#{bundle.ViewResCuentasOrdenesLabel_ordEstadoOrden}"/>
+                    <h:outputText value="#{resCuentasOrdenesController.selected.ordEstadoOrden}" title="#{bundle.ViewResCuentasOrdenesTitle_ordEstadoOrden}"/>
+                    <h:outputText value="#{bundle.ViewResCuentasOrdenesLabel_ordFechatiempoIngreso}"/>
+                    <h:outputText value="#{resCuentasOrdenesController.selected.ordFechatiempoIngreso}" title="#{bundle.ViewResCuentasOrdenesTitle_ordFechatiempoIngreso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewResCuentasOrdenesLabel_ordEmpleadoId}"/>
+                    <h:outputText value="#{resCuentasOrdenesController.selected.ordEmpleadoId}" title="#{bundle.ViewResCuentasOrdenesTitle_ordEmpleadoId}"/>
+                    <h:outputText value="#{bundle.ViewResCuentasOrdenesLabel_ordCuentaId}"/>
+                    <h:outputText value="#{resCuentasOrdenesController.selected.ordCuentaId}" title="#{bundle.ViewResCuentasOrdenesTitle_ordCuentaId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resCuentasOrdenesController.destroyAndView}" value="#{bundle.ViewResCuentasOrdenesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewResCuentasOrdenesEditLink}"/>
+                <br />
+                <h:commandLink action="#{resCuentasOrdenesController.prepareCreate}" value="#{bundle.ViewResCuentasOrdenesCreateLink}" />
+                <br />
+                <h:commandLink action="#{resCuentasOrdenesController.prepareList}" value="#{bundle.ViewResCuentasOrdenesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewResCuentasOrdenesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResCorteZTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResCorteZEmpty}" rendered="#{resCorteZController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resCorteZController.items.rowCount > 0}">
+                    <h:outputText value="#{resCorteZController.pagination.pageFirstItem + 1}..#{resCorteZController.pagination.pageLastItem + 1}/#{resCorteZController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resCorteZController.previous}" value="#{bundle.Previous} #{resCorteZController.pagination.pageSize}" rendered="#{resCorteZController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resCorteZController.next}" value="#{bundle.Next} #{resCorteZController.pagination.pageSize}" rendered="#{resCorteZController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resCorteZController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_idCorteZ}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCorteZ}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInicio}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaFin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaRecibido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRecibido}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaRemesado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRemesado}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_revisionRecepcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.revisionRecepcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalCuadrar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalCuadrar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalDescuentos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalDescuentos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalDiferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalDiferencia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalEfectivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalEfectivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalPos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalPos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalCompras}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalCompras}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_totalCaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalCaja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpRecepcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpRecepcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpRemesado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpRemesado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpRecibido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpRecibido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpIngreso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpIngreso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resCorteZController.prepareView}" value="#{bundle.ListResCorteZViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resCorteZController.prepareEdit}" value="#{bundle.ListResCorteZEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resCorteZController.destroy}" value="#{bundle.ListResCorteZDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resCorteZController.prepareCreate}" value="#{bundle.ListResCorteZCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResCorteZIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

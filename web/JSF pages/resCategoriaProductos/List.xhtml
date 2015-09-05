@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResCategoriaProductosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResCategoriaProductosEmpty}" rendered="#{resCategoriaProductosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resCategoriaProductosController.items.rowCount > 0}">
+                    <h:outputText value="#{resCategoriaProductosController.pagination.pageFirstItem + 1}..#{resCategoriaProductosController.pagination.pageLastItem + 1}/#{resCategoriaProductosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resCategoriaProductosController.previous}" value="#{bundle.Previous} #{resCategoriaProductosController.pagination.pageSize}" rendered="#{resCategoriaProductosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resCategoriaProductosController.next}" value="#{bundle.Next} #{resCategoriaProductosController.pagination.pageSize}" rendered="#{resCategoriaProductosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resCategoriaProductosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCategoriaProductosTitle_capId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCategoriaProductosTitle_capCategoriaProducto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capCategoriaProducto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCategoriaProductosTitle_capNodoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capNodoId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResCategoriaProductosTitle_capMenuId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.capMenuId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resCategoriaProductosController.prepareView}" value="#{bundle.ListResCategoriaProductosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resCategoriaProductosController.prepareEdit}" value="#{bundle.ListResCategoriaProductosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resCategoriaProductosController.destroy}" value="#{bundle.ListResCategoriaProductosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resCategoriaProductosController.prepareCreate}" value="#{bundle.ListResCategoriaProductosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResCategoriaProductosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateResCorteZTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_idCorteZ}" for="idCorteZ" />
+                    <h:inputText id="idCorteZ" value="#{resCorteZController.selected.idCorteZ}" title="#{bundle.CreateResCorteZTitle_idCorteZ}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_idCorteZ}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_fechaInicio}" for="fechaInicio" />
+                    <h:inputText id="fechaInicio" value="#{resCorteZController.selected.fechaInicio}" title="#{bundle.CreateResCorteZTitle_fechaInicio}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_fechaFin}" for="fechaFin" />
+                    <h:inputText id="fechaFin" value="#{resCorteZController.selected.fechaFin}" title="#{bundle.CreateResCorteZTitle_fechaFin}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_fechaFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_fechaRecibido}" for="fechaRecibido" />
+                    <h:inputText id="fechaRecibido" value="#{resCorteZController.selected.fechaRecibido}" title="#{bundle.CreateResCorteZTitle_fechaRecibido}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_fechaRecibido}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_fechaRemesado}" for="fechaRemesado" />
+                    <h:inputText id="fechaRemesado" value="#{resCorteZController.selected.fechaRemesado}" title="#{bundle.CreateResCorteZTitle_fechaRemesado}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_fechaRemesado}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_revisionRecepcion}" for="revisionRecepcion" />
+                    <h:inputText id="revisionRecepcion" value="#{resCorteZController.selected.revisionRecepcion}" title="#{bundle.CreateResCorteZTitle_revisionRecepcion}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_revisionRecepcion}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalCuadrar}" for="totalCuadrar" />
+                    <h:inputText id="totalCuadrar" value="#{resCorteZController.selected.totalCuadrar}" title="#{bundle.CreateResCorteZTitle_totalCuadrar}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalCuadrar}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalDescuentos}" for="totalDescuentos" />
+                    <h:inputText id="totalDescuentos" value="#{resCorteZController.selected.totalDescuentos}" title="#{bundle.CreateResCorteZTitle_totalDescuentos}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalDescuentos}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalDiferencia}" for="totalDiferencia" />
+                    <h:inputText id="totalDiferencia" value="#{resCorteZController.selected.totalDiferencia}" title="#{bundle.CreateResCorteZTitle_totalDiferencia}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalDiferencia}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalEfectivo}" for="totalEfectivo" />
+                    <h:inputText id="totalEfectivo" value="#{resCorteZController.selected.totalEfectivo}" title="#{bundle.CreateResCorteZTitle_totalEfectivo}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalEfectivo}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalPos}" for="totalPos" />
+                    <h:inputText id="totalPos" value="#{resCorteZController.selected.totalPos}" title="#{bundle.CreateResCorteZTitle_totalPos}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalPos}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalCompras}" for="totalCompras" />
+                    <h:inputText id="totalCompras" value="#{resCorteZController.selected.totalCompras}" title="#{bundle.CreateResCorteZTitle_totalCompras}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalCompras}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_totalCaja}" for="totalCaja" />
+                    <h:inputText id="totalCaja" value="#{resCorteZController.selected.totalCaja}" title="#{bundle.CreateResCorteZTitle_totalCaja}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_totalCaja}"/>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_idEmpRecepcion}" for="idEmpRecepcion" />
+                    <h:selectOneMenu id="idEmpRecepcion" value="#{resCorteZController.selected.idEmpRecepcion}" title="#{bundle.CreateResCorteZTitle_idEmpRecepcion}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_idEmpRecepcion}">
+                        <f:selectItems value="#{resEmpleadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_idEmpRemesado}" for="idEmpRemesado" />
+                    <h:selectOneMenu id="idEmpRemesado" value="#{resCorteZController.selected.idEmpRemesado}" title="#{bundle.CreateResCorteZTitle_idEmpRemesado}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_idEmpRemesado}">
+                        <f:selectItems value="#{resEmpleadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_idEmpRecibido}" for="idEmpRecibido" />
+                    <h:selectOneMenu id="idEmpRecibido" value="#{resCorteZController.selected.idEmpRecibido}" title="#{bundle.CreateResCorteZTitle_idEmpRecibido}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_idEmpRecibido}">
+                        <f:selectItems value="#{resEmpleadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateResCorteZLabel_idEmpIngreso}" for="idEmpIngreso" />
+                    <h:selectOneMenu id="idEmpIngreso" value="#{resCorteZController.selected.idEmpIngreso}" title="#{bundle.CreateResCorteZTitle_idEmpIngreso}" required="true" requiredMessage="#{bundle.CreateResCorteZRequiredMessage_idEmpIngreso}">
+                        <f:selectItems value="#{resEmpleadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resCorteZController.create}" value="#{bundle.CreateResCorteZSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{resCorteZController.prepareList}" value="#{bundle.CreateResCorteZShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateResCorteZIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
