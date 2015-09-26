@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -36,11 +37,17 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ResCuentas.findAll", query = "SELECT r FROM ResCuentas r"),
     @NamedQuery(name = "ResCuentas.findByCueId", query = "SELECT r FROM ResCuentas r WHERE r.cueId = :cueId"),
     @NamedQuery(name = "ResCuentas.findByCueEstado", query = "SELECT r FROM ResCuentas r WHERE r.cueEstado = :cueEstado"),
+    @NamedQuery(name = "ResCuentas.findByCueMesa", query = "SELECT r FROM ResCuentas r WHERE r.cueMesa = :cueMesa"),
     @NamedQuery(name = "ResCuentas.findByCueFechaCreacion", query = "SELECT r FROM ResCuentas r WHERE r.cueFechaCreacion = :cueFechaCreacion"),
     @NamedQuery(name = "ResCuentas.findByCueFechaCierre", query = "SELECT r FROM ResCuentas r WHERE r.cueFechaCierre = :cueFechaCierre"),
     @NamedQuery(name = "ResCuentas.findByCueBanderaExentoIva", query = "SELECT r FROM ResCuentas r WHERE r.cueBanderaExentoIva = :cueBanderaExentoIva"),
     @NamedQuery(name = "ResCuentas.findByCueBanderaExentoPropina", query = "SELECT r FROM ResCuentas r WHERE r.cueBanderaExentoPropina = :cueBanderaExentoPropina")})
 public class ResCuentas implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "cue_mesa")
+    private String cueMesa;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -178,6 +185,14 @@ public class ResCuentas implements Serializable {
     @Override
     public String toString() {
         return "org.jrestaurant.entities.ResCuentas[ cueId=" + cueId + " ]";
+    }
+
+    public String getCueMesa() {
+        return cueMesa;
+    }
+
+    public void setCueMesa(String cueMesa) {
+        this.cueMesa = cueMesa;
     }
     
 }
