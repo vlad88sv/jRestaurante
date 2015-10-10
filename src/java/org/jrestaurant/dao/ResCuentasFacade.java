@@ -52,7 +52,7 @@ public class ResCuentasFacade extends AbstractFacade<ResCuentas> {
         return alResCuentas;
     }
 
-    public ArrayList<ResCuentas> resCuentasfindByCueEstado(int cueEstado) {
+    public ArrayList<ResCuentas> resCuentasfindByCueEstado(boolean cueEstado) {
         Query query = em.createNamedQuery("ResCuentas.findByCueEstado");
         query.setParameter("cueEstado", cueEstado); 
         ArrayList<ResCuentas> alResCuentas = (ArrayList) query.getResultList();
@@ -80,14 +80,14 @@ public class ResCuentasFacade extends AbstractFacade<ResCuentas> {
         return alResCuentas;
     }
 
-    public ArrayList<ResCuentas> resCuentasfindByCueBanderaExentoIva(int cueBanderaExentoIva) {
+    public ArrayList<ResCuentas> resCuentasfindByCueBanderaExentoIva(boolean cueBanderaExentoIva) {
         Query query = em.createNamedQuery("ResCuentas.findByCueBanderaExentoIva");
         query.setParameter("cueBanderaExentoIva", cueBanderaExentoIva); 
         ArrayList<ResCuentas> alResCuentas = (ArrayList) query.getResultList();
         return alResCuentas;
     }
 
-    public ArrayList<ResCuentas> resCuentasfindByCueBanderaExentoPropina(int cueBanderaExentoPropina) {
+    public ArrayList<ResCuentas> resCuentasfindByCueBanderaExentoPropina(boolean cueBanderaExentoPropina) {
         Query query = em.createNamedQuery("ResCuentas.findByCueBanderaExentoPropina");
         query.setParameter("cueBanderaExentoPropina", cueBanderaExentoPropina); 
         ArrayList<ResCuentas> alResCuentas = (ArrayList) query.getResultList();
