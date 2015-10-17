@@ -3,44 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+       <ui:composition template="/template/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateResCuentasOrdenesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.CreateResCuentasOrdenesTitle}" style="margin-bottom:20px">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
+                <div class="btn-crear">
+                    <p class="titulos2"> #{bundle.CreateResCuentasOrdenesTitle}</p>
+                </div>
+                <div class="campos">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateResCuentasOrdenesLabel_ordId}" for="ordId" />
-                    <h:inputText id="ordId" value="#{resCuentasOrdenesController.selected.ordId}" title="#{bundle.CreateResCuentasOrdenesTitle_ordId}" required="true" requiredMessage="#{bundle.CreateResCuentasOrdenesRequiredMessage_ordId}"/>
+                    <h:inputText class="inp" id="ordId" value="#{resCuentasOrdenesController.selected.ordId}" title="#{bundle.CreateResCuentasOrdenesTitle_ordId}" required="true" requiredMessage="#{bundle.CreateResCuentasOrdenesRequiredMessage_ordId}"/>
                     <h:outputLabel value="#{bundle.CreateResCuentasOrdenesLabel_ordEstadoOrden}" for="ordEstadoOrden" />
-                    <h:inputText id="ordEstadoOrden" value="#{resCuentasOrdenesController.selected.ordEstadoOrden}" title="#{bundle.CreateResCuentasOrdenesTitle_ordEstadoOrden}" />
+                    <h:inputText class="inp" id="ordEstadoOrden" value="#{resCuentasOrdenesController.selected.ordEstadoOrden}" title="#{bundle.CreateResCuentasOrdenesTitle_ordEstadoOrden}" />
                     <h:outputLabel value="#{bundle.CreateResCuentasOrdenesLabel_ordFechatiempoIngreso}" for="ordFechatiempoIngreso" />
-                    <h:inputText id="ordFechatiempoIngreso" value="#{resCuentasOrdenesController.selected.ordFechatiempoIngreso}" title="#{bundle.CreateResCuentasOrdenesTitle_ordFechatiempoIngreso}" >
+                    <h:inputText class="inp" id="ordFechatiempoIngreso" value="#{resCuentasOrdenesController.selected.ordFechatiempoIngreso}" title="#{bundle.CreateResCuentasOrdenesTitle_ordFechatiempoIngreso}" >
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateResCuentasOrdenesLabel_ordEmpleadoId}" for="ordEmpleadoId" />
-                    <h:selectOneMenu id="ordEmpleadoId" value="#{resCuentasOrdenesController.selected.ordEmpleadoId}" title="#{bundle.CreateResCuentasOrdenesTitle_ordEmpleadoId}" >
+                    <h:selectOneMenu class="inp" id="ordEmpleadoId" value="#{resCuentasOrdenesController.selected.ordEmpleadoId}" title="#{bundle.CreateResCuentasOrdenesTitle_ordEmpleadoId}" >
                         <f:selectItems value="#{resEmpleadosController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateResCuentasOrdenesLabel_ordCuentaId}" for="ordCuentaId" />
-                    <h:selectOneMenu id="ordCuentaId" value="#{resCuentasOrdenesController.selected.ordCuentaId}" title="#{bundle.CreateResCuentasOrdenesTitle_ordCuentaId}" >
+                    <h:selectOneMenu class="inp" id="ordCuentaId" value="#{resCuentasOrdenesController.selected.ordCuentaId}" title="#{bundle.CreateResCuentasOrdenesTitle_ordCuentaId}" >
                         <f:selectItems value="#{resCuentasController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <br />
-                <h:commandLink action="#{resCuentasOrdenesController.create}" value="#{bundle.CreateResCuentasOrdenesSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{resCuentasOrdenesController.prepareList}" value="#{bundle.CreateResCuentasOrdenesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
+                    </div>
+                <div class="btn-crear">
+                <p:commandButton action="#{resCuentasOrdenesController.create}" value="#{bundle.CreateResCuentasOrdenesSaveLink}" />
+                <p:commandButton action="#{resCuentasOrdenesController.prepareList}" value="#{bundle.CreateResCuentasOrdenesShowAllLink}" immediate="true"/>
+                </div>
                 <h:link outcome="/index" value="#{bundle.CreateResCuentasOrdenesIndexLink}"/>
             </h:form>
+                </p:fieldset>
         </ui:define>
     </ui:composition>
 

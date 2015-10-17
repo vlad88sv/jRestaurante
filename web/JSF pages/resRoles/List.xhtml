@@ -3,13 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
 
-    <ui:composition template="/template.xhtml">
+     <ui:composition template="/template/common/commonLayout.xhtml">
+        <ui:define name="header">
+            <h1>nada</h1>
+        </ui:define>
+        
+      
+        
         <ui:define name="title">
             <h:outputText value="#{bundle.ListResRolesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.ListResRolesTitle}" style="margin-bottom:20px">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -19,20 +28,14 @@
                     <h:outputText value="#{resRolesController.pagination.pageFirstItem + 1}..#{resRolesController.pagination.pageLastItem + 1}/#{resRolesController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{resRolesController.previous}" value="#{bundle.Previous} #{resRolesController.pagination.pageSize}" rendered="#{resRolesController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{resRolesController.next}" value="#{bundle.Next} #{resRolesController.pagination.pageSize}" rendered="#{resRolesController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{resRolesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResRolesTitle_rolId}"/>
-                            </f:facet>
+                    <p:dataTable value="#{resRolesController.items}" var="item" widgetVar="nodoTable">
+                        <p:column headerText="ID"  filterBy="#{item.rolId}" filterMatchMode="exact">                            
                             <h:outputText value="#{item.rolId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResRolesTitle_rolRol}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Rol"  filterBy="#{item.rolRol}" filterMatchMode="exact">                            
                             <h:outputText value="#{item.rolRol}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -41,15 +44,16 @@
                             <h:commandLink action="#{resRolesController.prepareEdit}" value="#{bundle.ListResRolesEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{resRolesController.destroy}" value="#{bundle.ListResRolesDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{resRolesController.prepareCreate}" value="#{bundle.ListResRolesCreateLink}"/>
+                <p:commandButton action="#{resRolesController.prepareCreate}" value="#{bundle.ListResRolesCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListResRolesIndexLink}"/>
             </h:form>
+            </p:fieldset>
         </ui:define>
     </ui:composition>
 

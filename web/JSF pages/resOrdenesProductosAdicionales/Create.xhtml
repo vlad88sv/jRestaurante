@@ -3,44 +3,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+       <ui:composition template="/template/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateResOrdenesProductosAdicionalesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.CreateResOrdenesProductosAdicionalesTitle}" style="margin-bottom:20px">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
+                <div class="btn-crear">
+                    <p class="titulos2"> #{bundle.CreateResOrdenesProductosAdicionalesTitle}</p>
+                </div>
+                <div class="campos">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateResOrdenesProductosAdicionalesLabel_opaId}" for="opaId" />
-                    <h:inputText id="opaId" value="#{resOrdenesProductosAdicionalesController.selected.opaId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaId}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_opaId}"/>
+                    <h:inputText class="inp" id="opaId" value="#{resOrdenesProductosAdicionalesController.selected.opaId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaId}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_opaId}"/>
                     <h:outputLabel value="#{bundle.CreateResOrdenesProductosAdicionalesLabel_opaOperacion}" for="opaOperacion" />
-                    <h:inputText id="opaOperacion" value="#{resOrdenesProductosAdicionalesController.selected.opaOperacion}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaOperacion}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_opaOperacion}"/>
+                    <h:inputText class="inp" id="opaOperacion" value="#{resOrdenesProductosAdicionalesController.selected.opaOperacion}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaOperacion}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_opaOperacion}"/>
                     <h:outputLabel value="#{bundle.CreateResOrdenesProductosAdicionalesLabel_opaActivo}" for="opaActivo" />
-                    <h:inputText id="opaActivo" value="#{resOrdenesProductosAdicionalesController.selected.opaActivo}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaActivo}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_opaActivo}"/>
+                    <h:inputText class="inp" id="opaActivo" value="#{resOrdenesProductosAdicionalesController.selected.opaActivo}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaActivo}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_opaActivo}"/>
                     <h:outputLabel value="#{bundle.CreateResOrdenesProductosAdicionalesLabel_resOrdenesProductosAdicionalesOpaId}" for="resOrdenesProductosAdicionalesOpaId" />
-                    <h:inputText id="resOrdenesProductosAdicionalesOpaId" value="#{resOrdenesProductosAdicionalesController.selected.resOrdenesProductosAdicionalesOpaId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_resOrdenesProductosAdicionalesOpaId}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_resOrdenesProductosAdicionalesOpaId}"/>
+                    <h:inputText class="inp" id="resOrdenesProductosAdicionalesOpaId" value="#{resOrdenesProductosAdicionalesController.selected.resOrdenesProductosAdicionalesOpaId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_resOrdenesProductosAdicionalesOpaId}" required="true" requiredMessage="#{bundle.CreateResOrdenesProductosAdicionalesRequiredMessage_resOrdenesProductosAdicionalesOpaId}"/>
                     <h:outputLabel value="#{bundle.CreateResOrdenesProductosAdicionalesLabel_opaOrdenesProductoId}" for="opaOrdenesProductoId" />
-                    <h:selectOneMenu id="opaOrdenesProductoId" value="#{resOrdenesProductosAdicionalesController.selected.opaOrdenesProductoId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaOrdenesProductoId}" >
+                    <h:selectOneMenu class="inp" id="opaOrdenesProductoId" value="#{resOrdenesProductosAdicionalesController.selected.opaOrdenesProductoId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaOrdenesProductoId}" >
                         <f:selectItems value="#{resOrdenesProductosController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateResOrdenesProductosAdicionalesLabel_opaAdicionalId}" for="opaAdicionalId" />
-                    <h:selectOneMenu id="opaAdicionalId" value="#{resOrdenesProductosAdicionalesController.selected.opaAdicionalId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaAdicionalId}" >
+                    <h:selectOneMenu class="inp" id="opaAdicionalId" value="#{resOrdenesProductosAdicionalesController.selected.opaAdicionalId}" title="#{bundle.CreateResOrdenesProductosAdicionalesTitle_opaAdicionalId}" >
                         <f:selectItems value="#{resAdicionablesController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
+                    </div>
                 <br />
-                <h:commandLink action="#{resOrdenesProductosAdicionalesController.create}" value="#{bundle.CreateResOrdenesProductosAdicionalesSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{resOrdenesProductosAdicionalesController.prepareList}" value="#{bundle.CreateResOrdenesProductosAdicionalesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
+                <div class="btn-crear">
+                <p:commandButton action="#{resOrdenesProductosAdicionalesController.create}" value="#{bundle.CreateResOrdenesProductosAdicionalesSaveLink}" />
+                <p:commandButton action="#{resOrdenesProductosAdicionalesController.prepareList}" value="#{bundle.CreateResOrdenesProductosAdicionalesShowAllLink}" immediate="true"/>
+                </div>
                 <h:link outcome="/index" value="#{bundle.CreateResOrdenesProductosAdicionalesIndexLink}"/>
             </h:form>
+                </p:fieldset>
         </ui:define>
     </ui:composition>
 

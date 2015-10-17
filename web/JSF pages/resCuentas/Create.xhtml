@@ -3,48 +3,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/template/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateResCuentasTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.CreateResCuentasTitle}" style="margin-bottom:20px">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
+                <div class="btn-crear">
+                    <p class="titulos2"> #{bundle.CreateResCuentasTitle}</p>
+                </div>
+                <div class="campos">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateResCuentasLabel_cueId}" for="cueId" />
-                    <h:inputText id="cueId" value="#{resCuentasController.selected.cueId}" title="#{bundle.CreateResCuentasTitle_cueId}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueId}"/>
+                    <h:inputText class="inp" id="cueId" value="#{resCuentasController.selected.cueId}" title="#{bundle.CreateResCuentasTitle_cueId}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueId}"/>
                     <h:outputLabel value="#{bundle.CreateResCuentasLabel_cueEstado}" for="cueEstado" />
-                    <h:inputText id="cueEstado" value="#{resCuentasController.selected.cueEstado}" title="#{bundle.CreateResCuentasTitle_cueEstado}" />
+                    <h:inputText class="inp" id="cueEstado" value="#{resCuentasController.selected.cueEstado}" title="#{bundle.CreateResCuentasTitle_cueEstado}" />
                     <h:outputLabel value="#{bundle.CreateResCuentasLabel_cueFechaCreacion}" for="cueFechaCreacion" />
-                    <h:inputText id="cueFechaCreacion" value="#{resCuentasController.selected.cueFechaCreacion}" title="#{bundle.CreateResCuentasTitle_cueFechaCreacion}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueFechaCreacion}">
+                    <h:inputText class="inp" id="cueFechaCreacion" value="#{resCuentasController.selected.cueFechaCreacion}" title="#{bundle.CreateResCuentasTitle_cueFechaCreacion}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueFechaCreacion}">
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateResCuentasLabel_cueFechaCierre}" for="cueFechaCierre" />
-                    <h:inputText id="cueFechaCierre" value="#{resCuentasController.selected.cueFechaCierre}" title="#{bundle.CreateResCuentasTitle_cueFechaCierre}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueFechaCierre}">
+                    <h:inputText class="inp" id="cueFechaCierre" value="#{resCuentasController.selected.cueFechaCierre}" title="#{bundle.CreateResCuentasTitle_cueFechaCierre}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueFechaCierre}">
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateResCuentasLabel_cueBanderaExentoIva}" for="cueBanderaExentoIva" />
-                    <h:inputText id="cueBanderaExentoIva" value="#{resCuentasController.selected.cueBanderaExentoIva}" title="#{bundle.CreateResCuentasTitle_cueBanderaExentoIva}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueBanderaExentoIva}">
+                    <h:inputText class="inp" id="cueBanderaExentoIva" value="#{resCuentasController.selected.cueBanderaExentoIva}" title="#{bundle.CreateResCuentasTitle_cueBanderaExentoIva}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueBanderaExentoIva}">
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateResCuentasLabel_cueBanderaExentoPropina}" for="cueBanderaExentoPropina" />
-                    <h:inputText id="cueBanderaExentoPropina" value="#{resCuentasController.selected.cueBanderaExentoPropina}" title="#{bundle.CreateResCuentasTitle_cueBanderaExentoPropina}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueBanderaExentoPropina}">
+                    <h:inputText class="inp" id="cueBanderaExentoPropina" value="#{resCuentasController.selected.cueBanderaExentoPropina}" title="#{bundle.CreateResCuentasTitle_cueBanderaExentoPropina}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueBanderaExentoPropina}">
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                     </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResCuentasTitle_cueMesa}" for="cueId" />
+                    <h:inputText class="inp" id="cueMesa" value="#{resCuentasController.selected.cueMesa}" title="#{bundle.CreateResCuentasTitle_cueMesa}" required="true" requiredMessage="#{bundle.CreateResCuentasRequiredMessage_cueMesa}">
+                        
+                    </h:inputText>
                 </h:panelGrid>
-                <br />
-                <h:commandLink action="#{resCuentasController.create}" value="#{bundle.CreateResCuentasSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{resCuentasController.prepareList}" value="#{bundle.CreateResCuentasShowAllLink}" immediate="true"/>
-                <br />
-                <br />
+                    </div>
+                <div class="btn-crear">
+                <p:commandButton action="#{resCuentasController.create}" value="#{bundle.CreateResCuentasSaveLink}" />
+                <p:commandButton action="#{resCuentasController.prepareList}" value="#{bundle.CreateResCuentasShowAllLink}" immediate="true"/>
+                </div>
                 <h:link outcome="/index" value="#{bundle.CreateResCuentasIndexLink}"/>
             </h:form>
+                </p:fieldset>
         </ui:define>
     </ui:composition>
 

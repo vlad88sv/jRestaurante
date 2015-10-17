@@ -76,6 +76,7 @@ public class ResCuentas implements Serializable {
     @Column(name = "cue_bandera_exento_propina")
     @Temporal(TemporalType.TIMESTAMP)
     private Date cueBanderaExentoPropina;
+    
     @OneToMany(mappedBy = "ordCuentaId")
     private List<ResCuentasOrdenes> resCuentasOrdenesList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCuenta")

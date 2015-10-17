@@ -3,32 +3,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+       <ui:composition template="/template/common/commonLayout.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateResRolesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.CreateResRolesTitle}" style="margin-bottom:20px">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
+                 <div class="btn-crear">
+                    <p class="titulos2"> #{bundle.CreateResRolesTitle}</p>
+                </div>
+                <div class="campos">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateResRolesLabel_rolId}" for="rolId" />
-                    <h:inputText id="rolId" value="#{resRolesController.selected.rolId}" title="#{bundle.CreateResRolesTitle_rolId}" required="true" requiredMessage="#{bundle.CreateResRolesRequiredMessage_rolId}"/>
+                    <h:inputText class="inp" id="rolId" value="#{resRolesController.selected.rolId}" title="#{bundle.CreateResRolesTitle_rolId}" required="true" requiredMessage="#{bundle.CreateResRolesRequiredMessage_rolId}"/>
                     <h:outputLabel value="#{bundle.CreateResRolesLabel_rolRol}" for="rolRol" />
-                    <h:inputText id="rolRol" value="#{resRolesController.selected.rolRol}" title="#{bundle.CreateResRolesTitle_rolRol}" required="true" requiredMessage="#{bundle.CreateResRolesRequiredMessage_rolRol}"/>
+                    <h:inputText class="inp" id="rolRol" value="#{resRolesController.selected.rolRol}" title="#{bundle.CreateResRolesTitle_rolRol}" required="true" requiredMessage="#{bundle.CreateResRolesRequiredMessage_rolRol}"/>
                 </h:panelGrid>
+                    </div>
                 <br />
-                <h:commandLink action="#{resRolesController.create}" value="#{bundle.CreateResRolesSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{resRolesController.prepareList}" value="#{bundle.CreateResRolesShowAllLink}" immediate="true"/>
-                <br />
-                <br />
+                <div class="btn-crear">
+                 <p:commandButton action="#{resRolesController.create}" value="#{bundle.CreateResRolesSaveLink}" />
+                 <p:commandButton action="#{resRolesController.prepareList}" value="#{bundle.CreateResRolesShowAllLink}" immediate="true"/>              
+                </div>
                 <h:link outcome="/index" value="#{bundle.CreateResRolesIndexLink}"/>
             </h:form>
+                </p:fieldset>
         </ui:define>
     </ui:composition>
 

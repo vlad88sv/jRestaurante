@@ -1,41 +1,53 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      
+      xmlns:p="http://primefaces.org/ui"  >
     <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <title>Facelet Title</title>        
+        <h:outputStylesheet name="css/demo.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="/JSF pages/resAdicionables/List" value="Show All ResAdicionables Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resCategoriaProductos/List" value="Show All ResCategoriaProductos Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resCompras/List" value="Show All ResCompras Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resCorteZ/List" value="Show All ResCorteZ Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resCuentas/List" value="Show All ResCuentas Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resCuentasDescuento/List" value="Show All ResCuentasDescuento Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resCuentasOrdenes/List" value="Show All ResCuentasOrdenes Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resEmpleados/List" value="Show All ResEmpleados Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resMenu/List" value="Show All ResMenu Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resNodo/List" value="Show All ResNodo Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resOrdenesProductos/List" value="Show All ResOrdenesProductos Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resOrdenesProductosAdicionales/List" value="Show All ResOrdenesProductosAdicionales Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resProductos/List" value="Show All ResProductos Items"/>
-        <br />
-        <h:link outcome="/JSF pages/resRoles/List" value="Show All ResRoles Items"/>
+        <div class="menu-top">
+            Header
+        </div>
+        
+        <h:form>
+            <p:growl autoUpdate="true"/> 
+            <p:panelMenu style="width:300px">
+                <p:submenu label="Mantenimientos">
+                    <p:menuitem outcome="/JSF pages/resAdicionables/List" value="Show All ResAdicionables Items" icon="ui-icon-disk"/>
+                    <p:menuitem outcome="/JSF pages/resCategoriaProductos/List" value="Show All ResCategoriaProductos Items"/>
+                    <p:menuitem outcome="/JSF pages/resCompras/List" value="Show All ResCompras Items"/>
+                    <p:menuitem outcome="/JSF pages/resCorteZ/List" value="Show All ResCorteZ Items"/>
+                    <p:menuitem outcome="/JSF pages/resCuentas/List" value="Show All ResCuentas Items"/>
+                    <p:menuitem outcome="/JSF pages/resCuentasDescuento/List" value="Show All ResCuentasDescuento Items"/>
+                    <p:menuitem outcome="/JSF pages/resCuentasOrdenes/List" value="Show All ResCuentasOrdenes Items"/>
+                    <p:menuitem outcome="/JSF pages/resEmpleados/List" value="Show All ResEmpleados Items"/>
+                    <p:menuitem outcome="/JSF pages/resMenu/List" value="Show All ResMenu Items"/>
+                    <p:menuitem outcome="/JSF pages/resNodo/List" value="Show All ResNodo Items"/>
+                    <p:menuitem outcome="/JSF pages/resOrdenesProductos/List" value="Show All ResOrdenesProductos Items"/>
+                    <p:menuitem outcome="/JSF pages/resOrdenesProductosAdicionales/List" value="Show All ResOrdenesProductosAdicionales Items"/>
+                    <p:menuitem outcome="/JSF pages/resProductos/List" value="Show All ResProductos Items"/>
+                    <p:menuitem outcome="/JSF pages/resRoles/List" value="Show All ResRoles Items"/>
+                </p:submenu>
+
+                <p:separator />
+                <p:submenu label="Navigations" >
+                    <p:submenu label="Links" icon="ui-icon-extlink">
+                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                            <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                            <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                            <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                        </p:submenu>
+                    </p:submenu>
+
+                </p:submenu>
+            </p:panelMenu>
+        </h:form>
+        
     </h:body>
 
 

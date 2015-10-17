@@ -3,13 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+     <ui:composition template="/template/common/commonLayout.xhtml">
+        <ui:define name="header">
+            <h1>nada</h1>
+        </ui:define>
+        
+        
+        
         <ui:define name="title">
             <h:outputText value="#{bundle.ListResMenuTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.ListResMenuTitle}" style="margin-bottom:20px">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -19,43 +27,36 @@
                     <h:outputText value="#{resMenuController.pagination.pageFirstItem + 1}..#{resMenuController.pagination.pageLastItem + 1}/#{resMenuController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{resMenuController.previous}" value="#{bundle.Previous} #{resMenuController.pagination.pageSize}" rendered="#{resMenuController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{resMenuController.next}" value="#{bundle.Next} #{resMenuController.pagination.pageSize}" rendered="#{resMenuController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{resMenuController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResMenuTitle_menId}"/>
-                            </f:facet>
+                    <p:dataTable value="#{resMenuController.items}" var="item">
+                       <p:column headerText="ID"  filterBy="#{item.menId}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.menId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResMenuTitle_menMenu}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Menu"  filterBy="#{item.menMenu}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.menMenu}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResMenuTitle_menActivo}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Activo"  filterBy="#{item.menActivo}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.menActivo}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column>
+                           
                             <h:commandLink action="#{resMenuController.prepareView}" value="#{bundle.ListResMenuViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{resMenuController.prepareEdit}" value="#{bundle.ListResMenuEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{resMenuController.destroy}" value="#{bundle.ListResMenuDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{resMenuController.prepareCreate}" value="#{bundle.ListResMenuCreateLink}"/>
+                <p:commandButton action="#{resMenuController.prepareCreate}" value="#{bundle.ListResMenuCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListResMenuIndexLink}"/>
             </h:form>
+            </p:fieldset>
         </ui:define>
     </ui:composition>
 

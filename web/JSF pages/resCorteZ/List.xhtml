@@ -3,13 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
 
-    <ui:composition template="/template.xhtml">
+           <ui:composition template="/template/common/commonLayout.xhtml">
+        <ui:define name="header">
+            <h1>nada</h1>
+        </ui:define>
+        
+         
         <ui:define name="title">
             <h:outputText value="#{bundle.ListResCorteZTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <p:fieldset legend="#{bundle.ListResCorteZTitle}" style="margin-bottom:20px">
+            
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -19,118 +27,84 @@
                     <h:outputText value="#{resCorteZController.pagination.pageFirstItem + 1}..#{resCorteZController.pagination.pageLastItem + 1}/#{resCorteZController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{resCorteZController.previous}" value="#{bundle.Previous} #{resCorteZController.pagination.pageSize}" rendered="#{resCorteZController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{resCorteZController.next}" value="#{bundle.Next} #{resCorteZController.pagination.pageSize}" rendered="#{resCorteZController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{resCorteZController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_idCorteZ}"/>
-                            </f:facet>
+                    <h:dataTable value="#{resCorteZController.items}" var="item" >
+                        <p:column headerText="ID"  filterBy="#{item.idCorteZ}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.idCorteZ}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaInicio}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Fecha"  filterBy="#{item.fechaInicio}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.fechaInicio}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaFin}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Fin"  filterBy="#{item.fechaFin}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.fechaFin}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaRecibido}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Reci."  filterBy="#{item.fechaRecibido}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.fechaRecibido}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_fechaRemesado}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="remesado."  filterBy="#{item.fechaRemesado}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.fechaRemesado}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_revisionRecepcion}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="recep."  filterBy="#{item.revisionRecepcion}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.revisionRecepcion}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalCuadrar}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="total."  filterBy="#{item.totalCuadrar}" filterMatchMode="exact">
+                           
                             <h:outputText value="#{item.totalCuadrar}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalDescuentos}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="desc."  filterBy="#{item.totalDescuentos}" filterMatchMode="exact">
+                           
                             <h:outputText value="#{item.totalDescuentos}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalDiferencia}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="difere."  filterBy="#{item.totalDiferencia}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.totalDiferencia}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalEfectivo}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="efec."  filterBy="#{item.totalEfectivo}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.totalEfectivo}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalPos}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="pos."  filterBy="#{item.totalPos}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.totalPos}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalCompras}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="compras."  filterBy="#{item.totalCompras}" filterMatchMode="exact">
+                           
                             <h:outputText value="#{item.totalCompras}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_totalCaja}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="caja."  filterBy="#{item.totalCaja}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.totalCaja}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpRecepcion}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="Recep.."  filterBy="#{item.idEmpRecepcion}" filterMatchMode="exact">
+                           
                             <h:outputText value="#{item.idEmpRecepcion}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpRemesado}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="idE.R."  filterBy="#{item.idEmpRemesado}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.idEmpRemesado}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpRecibido}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="idE.Re."  filterBy="#{item.idEmpRecibido}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.idEmpRecibido}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListResCorteZTitle_idEmpIngreso}"/>
-                            </f:facet>
+                        </p:column>
+                        <p:column headerText="ingre"  filterBy="#{item.idEmpIngreso}" filterMatchMode="exact">
+                            
                             <h:outputText value="#{item.idEmpIngreso}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -139,15 +113,16 @@
                             <h:commandLink action="#{resCorteZController.prepareEdit}" value="#{bundle.ListResCorteZEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{resCorteZController.destroy}" value="#{bundle.ListResCorteZDestroyLink}"/>
-                        </h:column>
+                        </p:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{resCorteZController.prepareCreate}" value="#{bundle.ListResCorteZCreateLink}"/>
+                <p:commandButton action="#{resCorteZController.prepareCreate}" value="#{bundle.ListResCorteZCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListResCorteZIndexLink}"/>
             </h:form>
+                </p:fieldset>
         </ui:define>
     </ui:composition>
 
